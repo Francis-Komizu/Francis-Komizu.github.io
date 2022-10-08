@@ -13,6 +13,145 @@
 		<link rel="icon" href="images/logo.ico" type="image/x-icon">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
+
+	<style>
+		* {
+		  box-sizing: border-box;
+		  }
+  
+		/* Set a background color */
+		body{
+		/* background-color: #f3f6fa; */
+		background-attachment: fixed;
+		background-image: url("images/night.jpg");
+		background-size: 100%;
+		}  
+		/* The actual timeline (the vertical ruler) */
+		.timeline {
+		  position: relative;
+		  max-width: 1200px;
+		  margin: 0 auto;
+		}
+  
+		/* The actual timeline (the vertical ruler) */
+		.timeline::after {
+		  content: '';
+		  position: absolute;
+		  width: 6px;
+		  background-color: #ffbf80;
+		  top: 0;
+		  bottom: 0;
+		  left: 50%;
+		  margin-left: -3px;
+		}
+  
+		/* Container around content */
+		.container_timeline {
+		  padding: 10px 40px;
+		  position: relative;
+		  background-color: inherit;
+		  width: 50%;
+		}
+  
+		/* The circles on the timeline */
+		.container_timeline::after {
+		  content: '';
+		  position: absolute;
+		  width: 25px;
+		  height: 25px;
+		  right: -13px;
+		  background-color: white;
+		  border: 4px solid #FF9F55;
+		  top: 15px;
+		  border-radius: 50%;
+		  z-index: 1;
+		}
+  
+		/* Place the container to the left */
+		.left {
+		  left: 0;
+		}
+  
+		/* Place the container to the right */
+		.right {
+		  left: 50%;
+		}
+  
+		/* Add arrows to the left container (pointing right) */
+		.left::before {
+		  content: " ";
+		  height: 0;
+		  position: absolute;
+		  top: 22px;
+		  width: 0;
+		  z-index: 1;
+		  right: 30px;
+		  border: medium solid white;
+		  border-width: 10px 0 10px 10px;
+		  border-color: transparent transparent transparent #ecf2f9;
+		}
+  
+		/* Add arrows to the right container (pointing left) */
+		.right::before {
+		  content: " ";
+		  height: 0;
+		  position: absolute;
+		  top: 22px;
+		  width: 0;
+		  z-index: 1;
+		  left: 30px;
+		  border: medium solid white;
+		  border-width: 10px 10px 10px 0;
+		  border-color: transparent #ecf2f9 transparent transparent;
+		}
+  
+		/* Fix the circle for containers on the right side */
+		.right::after {
+		  left: -12px;
+		}
+  
+		/* The actual content */
+		.content_timeline {
+		  padding: 20px 30px;
+		  background-color: white;
+		  position: relative;
+		  border-radius: 6px;
+		}
+  
+		/* Media queries - Responsive timeline on screens less than 600px wide */
+		@media screen and (max-width: 600px) {
+		/* Place the timelime to the left */
+		  .timeline::after {
+			left: 31px;
+		  }
+  
+		/* Full-width containers */
+		  .container_timeline {
+			width: 100%;
+			padding-left: 70px;
+			padding-right: 25px;
+		  }
+  
+		/* Make sure that all arrows are pointing leftwards */
+		  .container_timeline::before {
+			left: 60px;
+			border: medium solid white;
+			border-width: 10px 10px 10px 0;
+			border-color: transparent #f3f6fa transparent transparent;
+		  }
+  
+		/* Make sure all circles are at the same spot */
+		  .left::after, .right::after {
+			left: 18px;
+		  }
+  
+		/* Make all right containers behave like the left ones */
+		  .right {
+			left: 0%;
+		  }
+		}
+	  </style>
+	</head>
 	<body class="no-sidebar is-preload">
 		<div id="page-wrapper">
 
@@ -29,7 +168,6 @@
 									<li><a href="voice-conversion.html">Voice Conversion</a></li>
 									<li><a href="speech-recognition.html">Speech Recognition</a></li>
 									<li><a href="digital-signal-processing.html">Digital Signal Processing</a></li>
-									
 								</ul>					
 							</li>
 							<li class="submenu">
@@ -58,40 +196,157 @@
 
 					<header class="special container">
 						<span class="icon solid fa"></span>
-						<h2><strong>Speech Synthesis</strong></h2>
-						<p>I'm speaking...</p>
+						<h2 style="color: white"><strong>Speech Synthesis</strong></h2>
+						<p style="color: white">I'm speaking...</p>
 					</header>
 
 					<!-- One -->
-						<section class="wrapper style4 container">
+						<section class="wrapper style4 container" style="background-color: transparent">
 
 							<!-- Content -->
 								<div class="content">
 									<section>
-										<header>
-											<h3><strong>Acoustic Model</strong></h3>
+										<header style = "text-align: center">
+											<h3 style="color: white">Timelime</h3>
 										</header>
-										<ul>
-											<li><a href="notes/speech-synthesis/acoustic-model/tacotron/Tacotron.html">Tacotron: Towards End-to-End Speech Synthesis</a></li>
-											<li><a href="notes/speech-synthesis/acoustic-model/flow/Flow.html">Flow-based Generative Model</a></li>
-											<li><a href="notes/speech-synthesis/acoustic-model/glowtts/GlowTTS.html">Glow-TTS: A Generative Flow for Text-to-Speech via Monotonic Alignment Search</a></li>
-										</ul>
+										
+										<div class="timeline">
+											<div class="container_timeline left">
+												<div class="content_timeline">
+													<p style="font-size: large" ><strong>2014</strong></p>
+													<p>
+														<ul>
+														<li>
+															General Model:
+															<ul>
+																<li><a href="notes/speech-synthesis/general-model/VAE/VAE.html">Variational Autoencoder</a></li>
+																<lI><a href="notes/speech-synthesis/general-model/flow/Flow.html">Flow-based Generative Model</a></lI>
+															</ul>
+														</li>
+														</ul>
+													</p>
+												</div>
+											</div>
 
-										<header>
-											<h3><strong>Vocoder</strong></h3>
-										</header>
-										<ul>
-											<li><a href="notes/speech-synthesis/vocoder/wavenet/WaveNet.html">WaveNet: A Generative Model for Raw Audio</a></li>
-											<li><a href="notes/speech-synthesis/vocoder/hifigan/HiFiGAN.html">HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis</a></li>
-										</ul>
+											<div class="container_timeline right">
+												<div class="content_timeline">
+													<p style="font-size: large" ><strong>2015</strong></p>
+													<p>
+														<ul>
 
-										<header>
-											<h3><strong>End-to-End</strong></h3>
-										</header>
-										<ul>
-											<li><a href="notes/speech-synthesis/end2end/VAE/VAE.html">Variational Autoencoder</a></li>
-											<li><a href="notes/speech-synthesis/end2end/vits/VITS.html">VITS: Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech</a></li>
-										</ul>
+														</ul>
+													</p>
+												</div>
+											</div>
+
+											<div class="container_timeline left">
+												<div class="content_timeline">
+													<p style="font-size: large" ><strong>2016</strong></p>
+													<p>
+														<ul>
+
+														<li>
+															Vocoder:
+															<ul>
+																<li><a href="notes/speech-synthesis/vocoder/wavenet/WaveNet.html">WaveNet</a></li>
+															</ul>
+														</li>
+														</ul>
+													</p>
+												</div>
+											</div>
+
+											<div class="container_timeline right">
+												<div class="content_timeline">
+													<p style="font-size: large" ><strong>2017</strong></p>
+													<p>
+														<ul>
+
+														<li>
+															Acoustic Model:
+															<ul>
+																<li><a href="notes/speech-synthesis/acoustic-model/tacotron/Tacotron.html">Tacotron</a></li>
+															</ul>
+														</li>
+														</ul>
+													</p>
+												</div>
+											</div>
+
+											<div class="container_timeline left">
+												<div class="content_timeline">
+													<p style="font-size: large" ><strong>2018</strong></p>
+													<p>
+														<ul>
+
+														</ul>
+													</p>
+												</div>
+											</div>
+
+											<div class="container_timeline right">
+												<div class="content_timeline">
+													<p style="font-size: large" ><strong>2019</strong></p>
+													<p>
+														<ul>
+
+														</ul>
+													</p>
+												</div>
+											</div>
+
+											<div class="container_timeline left">
+												<div class="content_timeline">
+													<p style="font-size: large" ><strong>2020</strong></p>
+													<p>
+														<ul>
+	
+														<li>
+															Acoustic Model:
+															<ul>
+																<li><a href="notes/speech-synthesis/acoustic-model/glowtts/GlowTTS.html">Glow-TTS</a></li>
+															</ul>
+														</li>
+														<li>
+															Vocoder:
+															<ul>
+																<li><a href="notes/speech-synthesis/vocoder/hifigan/HiFiGAN.html">HiFi-GAN</a></li>
+															</ul>
+														</li>
+														</ul>
+													</p>
+												</div>
+											</div>
+
+											<div class="container_timeline right">
+												<div class="content_timeline">
+													<p style="font-size: large" ><strong>2021</strong></p>
+													<p>
+														<ul>
+
+														<li>
+															End-to-End:
+															<ul>
+																<li><a href="notes/speech-synthesis/end2end/vits/VITS.html">VITS</a></li>
+															</ul>
+														</li>
+														</ul>
+													</p>
+												</div>
+											</div>
+
+											<div class="container_timeline left">
+												<div class="content_timeline">
+													<p style="font-size: large" ><strong>2022</strong></p>
+													<p>
+														<ul>
+
+														</ul>
+													</p>
+												</div>
+											</div>
+
+										</div>
 									</section>
 								</div>
 
@@ -103,7 +358,7 @@
 				<footer id="footer">
 
 					<ul class="icons">
-						<li><a href="https://space.bilibili.com/636704927?spm_id_from=333.1007.0.0" class="icon brands circle fa-youtube"><span class="label">BILIBILI</span></a></li>
+						<li><a href="CC" class="icon brands circle fa-youtube"><span class="label">BILIBILI</span></a></li>
 						<li><a href="https://github.com/Francis-Komizu" class="icon brands circle fa-github-square"><span class="label">Github</span></a></li>
 						<li><a href="https://www.zhihu.com/people/sheng-gang-ao-di-yi-gua-pi" class="icon brands circle fa-quora"><span class="label">Zhihu</span></a></li>
 					</ul>
